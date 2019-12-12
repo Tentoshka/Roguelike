@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4da4654b-93fe-4a60-83b1-26a2a65cc75a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/game_message.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/inventory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/item.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/item_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/menus.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/fighter.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/fighter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/death_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/death_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/entity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_object/game_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/map_object/game_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/render_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/render_functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,6 +152,7 @@
       <workItem from="1575477380271" duration="603000" />
       <workItem from="1575538585177" duration="538000" />
       <workItem from="1576074553628" duration="3465000" />
+      <workItem from="1576167072568" duration="4717000" />
     </task>
     <task id="LOCAL-00001" summary="Generate Map">
       <created>1574951952210</created>
@@ -168,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575476969876</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Interface">
+      <created>1576167125982</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576167125982</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,10 +205,11 @@
     <MESSAGE value="Generate Map" />
     <MESSAGE value="FOV" />
     <MESSAGE value="Enemies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enemies" />
+    <MESSAGE value="Interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Interface" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Roguelike$main.coverage" NAME="main Coverage Results" MODIFIED="1574867499426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Roguelike$engine.coverage" NAME="engine Coverage Results" MODIFIED="1576077941730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Roguelike$engine.coverage" NAME="engine Coverage Results" MODIFIED="1576171732094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
