@@ -8,14 +8,23 @@ from entity import Entity, get_blocking_entities_at_location
 from render_functions import render_all, clear_all, RenderOrder
 from map_object.game_map import GameMap
 from fov_functions import initialize_fov, recompute_fov
+from game_message import MessageLog
 
 
 def main():
     screen_width = 80
     screen_height = 50
 
+    bar_width = 20
+    panel_height = 7
+    panel_y = screen_height - panel_height
+
+    message_x = bar_width + 2
+    message_width = screen_width - bar_width - 2
+    message_height = panel_height - 2
+
     map_width = 80
-    map_height = 45
+    map_height = 43
 
     room_max_size = 10
     room_min_size = 6
@@ -42,9 +51,10 @@ def main():
     libtcod.console_set_custom_font('./img/arial10x10.png',
                                     libtcod.FONT_TYPE_GRAYSCALE | libtcod.FONT_LAYOUT_TCOD)
 
-    libtcod.console_init_root(screen_width, screen_height, 'name', False)
+    libtcod.console_init_root(screen_width, screen_height, 'Roguelike', False)
 
     con = libtcod.console_new(screen_width, screen_height)
+    panel = libtcod.console_new(screen_width, panel_height)
 
     game_map = GameMap(map_width, map_height)
     game_map.make_map(max_rooms, room_min_size, room_max_size,
@@ -55,20 +65,23 @@ def main():
 
     fov_map = initialize_fov(game_map)
 
+    message_log = MessageLog(message_x, message_width, message_height)
+
     key = libtcod.Key()
     mouse = libtcod.Mouse()
 
     game_state = GameStates.PLAYERS_TURN
 
     while not libtcod.console_is_window_closed():
-        libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS, key, mouse)
+        libtcod.sys_check_for_event(libtcod.EVENT_KEY_PRESS | libtcod.EVENT_MOUSE, key, mouse)
 
         if fov_recompute:
             recompute_fov(fov_map, player.x, player.y,
                           fov_radius, fov_light_wall, fov_algorithm)
 
-        render_all(con, entities, player, game_map, fov_map, fov_recompute,
-                   screen_width, screen_height, colors)
+        render_all(con, panel, entities, player, game_map, fov_map,
+                   fov_recompute, message_log, screen_width,
+                   screen_height, bar_width, panel_height, panel_y, mouse, colors)
 
         fov_recompute = False
 
@@ -112,7 +125,7 @@ def main():
             dead_entity = player_turn_result.get('dead')
 
             if message:
-                print(message)
+                message_log.add_message(message)
 
             if dead_entity:
                 if dead_entity == player:
@@ -120,7 +133,7 @@ def main():
                 else:
                     message = kill_monster(dead_entity)
 
-                print(message)
+                message_log.add_message(message)
 
         if game_state == GameStates.ENEMY_TURN:
             for entity in entities:
@@ -133,7 +146,7 @@ def main():
                         dead_entity = enemy_turn_result.get('dead')
 
                         if message:
-                            print(message)
+                            message_log.add_message(message)
 
                         if dead_entity:
                             if dead_entity == player:
@@ -141,7 +154,7 @@ def main():
                             else:
                                 message = kill_monster(dead_entity)
 
-                            print(message)
+                            message_log.add_message(message)
 
                             if game_state == GameStates.PLAYER_DEAD:
                                 break
