@@ -49,6 +49,9 @@ class Entity:
                                                   self.y + dy)):
             self.move(dx, dy)
 
+    def distance(self, x, y):
+        return math.sqrt((x - self.x) ** 2 + (y - self.y) ** 2)
+
     def move_astar(self, target, entities, game_map):
         fov = libtcod.map_new(game_map.width, game_map.height)
 
